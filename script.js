@@ -35,18 +35,36 @@
     sections.forEach(section => observer.observe(section));
   }
 
-  // Lightweight number-counting animation. Values are stored in data-target so
-  // the visual text can retain useful suffixes such as K+, M+ and ×.
-  const counters = document.querySelectorAll('[data-counter]');
-  const animateCounter = el => {
+  // Automatically finds portfolio metrics, preserving prefixes/suffixes such as ₹, K+, M+, % and ×.
+  const metricSelectors = [
+    '.hero-metric strong', '.metric-row b', '.stats-grid b', '.work-card strong',
+    '.case-badge', '.case-grid strong', '.funnel b', '.credentials b'
+  ];
+  const metrics = [];
+  document.querySelectorAll(metricSelectors.join(',')).forEach(el => {
+    if (el.querySelector('span')) return;
+    const text = el.textContent.trim();
+    const match = text.match(/^(.*?)([0-9][0-9,]*(?:\.[0-9]+)?)(.*)$/);
+    if (!match) return;
+    const value = Number(match[2].replace(/,/g, ''));
+    if (!Number.isFinite(value) || value === 0) return;
+    el.dataset.counterValue = value;
+    el.dataset.counterPrefix = match[1];
+    el.dataset.counterSuffix = match[3];
+    el.dataset.counterDecimals = (match[2].split('.')[1] || '').length;
+    el.textContent = `${match[1]}0${match[3]}`;
+    metrics.push(el);
+  });
+
+  const animate = el => {
     if (el.dataset.counted) return;
     el.dataset.counted = 'true';
-    const target = Number(el.dataset.target);
-    const decimals = Number(el.dataset.decimals || 0);
-    const prefix = el.dataset.prefix || '';
-    const suffix = el.dataset.suffix || '';
-    const duration = Number(el.dataset.duration || 1100);
+    const target = Number(el.dataset.counterValue);
+    const decimals = Number(el.dataset.counterDecimals || 0);
+    const prefix = el.dataset.counterPrefix || '';
+    const suffix = el.dataset.counterSuffix || '';
     const start = performance.now();
+    const duration = 1200;
     const format = value => value.toLocaleString('en-IN', {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals
@@ -56,19 +74,16 @@
       const eased = 1 - Math.pow(1 - progress, 3);
       el.textContent = prefix + format(target * eased) + suffix;
       if (progress < 1) requestAnimationFrame(tick);
-      else el.textContent = prefix + format(target) + suffix;
     };
     requestAnimationFrame(tick);
   };
 
   if ('IntersectionObserver' in window) {
     const counterObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) animateCounter(entry.target);
-      });
-    }, { threshold: 0.35 });
-    counters.forEach(counter => counterObserver.observe(counter));
+      entries.forEach(entry => { if (entry.isIntersecting) animate(entry.target); });
+    }, { threshold: 0.25 });
+    metrics.forEach(el => counterObserver.observe(el));
   } else {
-    counters.forEach(animateCounter);
+    metrics.forEach(animate);
   }
 })();
