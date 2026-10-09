@@ -143,7 +143,14 @@
       if (videoFile) {
         const video = document.createElement('video');
         video.src = `creatives/${videoFile}`;
-        video.controls = true; video.autoplay = true; video.playsInline = true; video.preload = 'metadata';
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.muted = false;
+        video.defaultMuted = false;
+        video.volume = 1;
+        video.setAttribute('aria-label', 'Ad creative video with audio controls');
         if (videoFile === 'creative-2-web.mp4') lightboxNote.textContent = '4.68× ROAS · Top-performing UGC creative';
         else lightboxNote.textContent = 'Selected creative work · Rareduft';
         lightboxContent.appendChild(video);
