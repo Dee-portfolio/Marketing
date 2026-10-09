@@ -118,3 +118,49 @@ footer{font-size:.68rem}
  .tool-grid{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){.creative-card{transition:none}.creative-card:hover{transform:none}}
+
+
+/* Results-first hero: ROAS leads, portfolio proof stays above the fold */
+.hero{padding:2.35rem 0 0}
+.hero-grid{gap:1.6rem;align-items:center}
+.hero-proof{margin:0 0 1.15rem;padding:0 0 .9rem;border-bottom:1px solid rgba(23,35,27,.15)}
+.hero-proof-label{display:block;font:600 .63rem "IBM Plex Mono",monospace;letter-spacing:.14em;color:#54715a}
+.hero-proof>strong{display:block;margin:.12rem 0;color:#17231b;font:600 clamp(3.3rem,7vw,5.4rem)/1.02 "IBM Plex Mono",monospace;letter-spacing:-.075em}
+.hero-proof>strong span{font-size:.32em;letter-spacing:.02em;color:#a86e32;vertical-align:middle}
+.hero-proof p{margin:.25rem 0 0;color:#58635a;font-size:.8rem}
+.hero h1{font-size:clamp(2.25rem,4.4vw,3.7rem);line-height:1.04;max-width:650px;margin:.15rem 0 .45rem}
+.hero-copy{margin:.5rem 0;max-width:560px}
+.hero .actions{margin:1rem 0}
+.hero .micro{margin:.6rem 0 0}
+.hero-card{padding:1.05rem 1.2rem}
+.hero-card .card-kicker{margin:.1rem 0}
+.hero-metric{padding:.55rem 0 .65rem}
+.hero-metric strong{font-size:clamp(2rem,3.4vw,2.8rem)}
+.metric-row{padding:.48rem 0}
+.stats-strip{margin-top:1.2rem;padding:1.15rem 0}
+.stats-grid{gap:.7rem}
+.stats-grid b{font-size:1.25rem}
+@media(max-width:900px){
+ .hero{padding-top:1.8rem}
+ .hero-grid{gap:1.2rem}
+ .hero-proof{margin-bottom:.8rem;padding-bottom:.7rem}
+ .hero-proof>strong{font-size:clamp(3.1rem,12vw,4.6rem)}
+ .hero-card{padding:1rem 1.15rem}
+ .stats-strip{margin-top:1rem;padding:1rem 0}
+}
+@media(max-width:700px){
+ .hero{padding-top:1.2rem}
+ .hero-grid{gap:.9rem}
+ .hero-proof>strong{font-size:3.35rem}
+ .hero h1{font-size:clamp(2rem,8.5vw,2.8rem);line-height:1.04}
+ .hero-copy{font-size:.88rem;line-height:1.5}
+ .hero .actions{gap:.5rem;margin:.8rem 0}
+ .hero .btn{padding:.65rem 1rem}
+ .hero .micro{font-size:.62rem}
+ .hero-card{padding:.85rem 1rem}
+ .hero-card .metric-row{padding:.38rem 0}
+ .stats-strip{margin-top:.85rem;padding:.9rem 0}
+ .stats-grid{gap:.75rem}
+ .stats-grid b{font-size:1.1rem}
+ .stats-grid span{font-size:.64rem}
+}
