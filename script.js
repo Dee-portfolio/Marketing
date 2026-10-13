@@ -97,10 +97,7 @@
           </button>
           <div class="creative-copy"><span>UGC · META ADS</span><h3>Top-performing UGC creative</h3><p>The creative that delivered the account’s strongest ROAS signal and informed the shift toward UGC-led creative strategy.</p></div>
         </article>
-        <article class="creative-card">
-          <button class="creative-media" type="button" data-creative-video="creative-1-web.mp4" aria-label="Open UGC ad creative 1"><img src="creatives/creative-1-poster.jpg" alt="UGC ad creative" loading="lazy" decoding="async"><span class="play-badge">▶</span></button>
-          <div class="creative-copy"><span>UGC · META ADS</span><h3>UGC product storytelling</h3><p>Short-form creative designed to communicate product value quickly in-feed.</p></div>
-        </article>
+        
         <article class="creative-card">
           <button class="creative-media" type="button" data-creative-video="creative-3-web.mp4" aria-label="Open UGC ad creative 3"><img src="creatives/creative-3-poster.jpg" alt="UGC ad creative" loading="lazy" decoding="async"><span class="play-badge">▶</span></button>
           <div class="creative-copy"><span>UGC · META ADS</span><h3>Performance-led creative</h3><p>Creative variation used for testing messaging and audience response.</p></div>
