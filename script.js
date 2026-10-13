@@ -145,7 +145,7 @@
       video.autoplay = true;
       video.setAttribute('loop', '');
       video.loop = true;
-      video.preload = 'auto';
+      video.preload = 'metadata';
       video.setAttribute('aria-label', 'Muted autoplay ad creative preview');
       video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
       // Assign the source only after muted/inline attributes are in place.
@@ -166,6 +166,8 @@
     }
     activePreviewVideos.add(video);
     const tryPlay = () => {
+      // Keep only one inline preview playing at a time to reduce decoding and bandwidth.
+      activePreviewVideos.forEach(other => { if (other !== video) other.pause(); });
       video.muted = true;
       const promise = video.play();
       if (promise && promise.catch) promise.catch(() => {
