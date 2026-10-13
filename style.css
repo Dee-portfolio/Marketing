@@ -242,3 +242,27 @@ body{background:#F5F1E7!important;color:#17231B!important}
 .cert-hover-card{background:#F5F1E7!important;border-color:rgba(23,35,27,.15)!important}
 .cert-link:focus-visible,.creative-media:focus-visible{outline-color:#C28D4B!important}
 @media(max-width:700px){.site-header{background:rgba(245,241,231,.99)!important}}
+
+
+/* High-contrast forest green / cream / muted gold palette */
+:root{color-scheme:light;--bg:#17231B!important;--panel:#243329!important;--paper:#F5F1E7!important;--ink:#17231B!important;--dim:#5D6257!important;--gold:#C28D4B!important;--gold-soft:#E0C08A!important;--sage:#54715A!important}
+body,.creative-section{background:#F5F1E7!important;color:#17231B!important}
+.site-header{background:rgba(245,241,231,.98)!important;border-bottom:1px solid rgba(23,35,27,.2)!important}
+.brand,.main-nav a,.hero h1,.section h2:not(.light),.two-col h2,.timeline h3,.credentials b{color:#17231B}
+.brand-mark{border-color:#17231B!important}.nav-toggle span{background:#17231B!important}
+.nav-cta,.btn-primary{background:#17231B!important;color:#F5F1E7!important}
+.btn-ghost{background:transparent!important;color:#17231B!important;border-color:#54715A!important}
+.hero em{color:#C28D4B!important}.eyebrow,.hero-proof-label,.about-facts small,.credentials small,.case-grid article>span,.creative-copy>span{color:#54715A!important}
+.hero-proof>strong,.hero-proof>strong span{color:#C28D4B!important}
+.hero-card,.stats-strip,.dark,.contact-section,.case-badge{background:#17231B!important;color:#F5F1E7!important}
+.hero-card .card-kicker,.hero-metric strong,.stats-grid b,.work-card strong,.work-card a,.work-card .tag,.skill-group h3,.contact-links a{color:#E0C08A!important}
+.work-card{background:#202E24!important;border-color:rgba(224,192,138,.25)!important}
+.work-card h3,.skill-group h3{color:#F5F1E7!important}
+.case-section{background:#EAE3D4!important;color:#17231B!important}.case-grid article{border-top-color:#C28D4B!important}
+.funnel div{background:#F5F1E7!important;border-color:rgba(23,35,27,.16)!important}.funnel i{color:#C28D4B!important}
+.creative-card{background:#FBF8F0!important;border-color:rgba(23,35,27,.2)!important}
+.creative-result{background:#17231B!important;color:#E0C08A!important}.play-badge{background:rgba(23,35,27,.9)!important;color:#F5F1E7!important}
+.creative-media{background:#17231B!important}.wa-float{background:#54715A!important;color:#F5F1E7!important}
+.cert-hover-card{background:#F5F1E7!important;border-color:rgba(23,35,27,.2)!important}
+.cert-link:focus-visible,.creative-media:focus-visible{outline-color:#C28D4B!important}
+@media(max-width:700px){.site-header{background:rgba(245,241,231,.99)!important}}
