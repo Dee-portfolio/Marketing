@@ -110,6 +110,19 @@
         
         
         <article class="creative-card"><button class="creative-media" type="button" data-creative-image="creatives/9.png" aria-label="Open static ad creative 9"><img src="creatives/9.png" alt="Static Meta ad creative" loading="lazy" decoding="async"></button><div class="creative-copy"><span>STATIC · META ADS</span><h3>Campaign creative</h3><p>Additional static creative from the campaign asset mix.</p></div></article>
+        <article class="creative-card">
+          <button class="creative-media" type="button" data-creative-image="creatives/creative-static-optimized.webp" aria-label="Open Rareduft office-friendly fragrance static creative">
+            <img src="creatives/creative-static-optimized.webp" alt="Rareduft Dominance fragrance static ad creative highlighting long-lasting and office-friendly use" loading="lazy" decoding="async">
+          </button>
+          <div class="creative-copy"><span>STATIC · META ADS</span><h3>Office-friendly fragrance</h3><p>Product-led creative highlighting long-lasting wear and an office-friendly fragrance profile.</p></div>
+        </article>
+        <article class="creative-card">
+          <button class="creative-media" type="button" data-creative-video="creative-1-optimized.mp4" aria-label="Open additional Rareduft UGC ad creative">
+            <img src="creatives/creative-4-poster.jpg" alt="Preview poster for additional Rareduft UGC ad creative" loading="lazy" decoding="async">
+            <span class="play-badge">▶</span>
+          </button>
+          <div class="creative-copy"><span>UGC · META ADS</span><h3>UGC creative variation</h3><p>Additional short-form video creative included in the campaign creative mix.</p></div>
+        </article>
         
       </div>
     </div>`;
