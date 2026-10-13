@@ -121,53 +121,87 @@
 
   const creativeStyle = document.createElement('style');
   creativeStyle.textContent = `
-    .creative-section{background:#f6f5f0}.creative-intro{margin-bottom:2.2rem}.creative-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.creative-card{border:1px solid rgba(27,33,28,.12);border-radius:16px;background:#f8f4ea;overflow:hidden;display:flex;flex-direction:column}.creative-card.creative-featured{grid-column:span 1}.creative-media{position:relative;display:block;width:100%;aspect-ratio:4/3;padding:0;border:0;background:#14243a;overflow:hidden;cursor:pointer}.creative-media img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}.creative-media:hover img,.creative-media:focus-visible img{transform:scale(1.025)}.play-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(17,21,16,.82);color:#f6f5f0;font-size:1rem;border:1px solid rgba(243,239,228,.35)}.creative-result{position:absolute;left:12px;bottom:12px;background:#14243a;color:#7de0d0;border-radius:999px;padding:.45rem .7rem;font:600 .65rem "IBM Plex Mono",monospace}.creative-copy{padding:1.1rem 1.2rem 1.3rem}.creative-copy>span{font:600 .62rem "IBM Plex Mono",monospace;letter-spacing:.1em;color:#087f8c}.creative-copy h3{font-size:1.25rem;margin:.45rem 0 .35rem}.creative-copy p{margin:0;color:#596779;font-size:.8rem}.creative-lightbox{position:fixed;inset:0;z-index:210;background:rgba(10,13,11,.88);display:none;align-items:center;justify-content:center;padding:18px}.creative-lightbox.is-open{display:flex}.creative-lightbox-inner{position:relative;width:min(1000px,100%);max-height:92vh;display:grid;place-items:center}.creative-lightbox img,.creative-lightbox video{display:block;max-width:100%;max-height:88vh;width:auto;height:auto;border-radius:12px;background:#111}.creative-close{position:absolute;right:-8px;top:-12px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(243,239,228,.3);background:#f6f5f0;color:#14243a;font-size:1.4rem;cursor:pointer;z-index:2}.creative-lightbox-note{position:absolute;left:0;bottom:-32px;color:#7de0d0;font:600 .68rem "IBM Plex Mono",monospace}.creative-media:focus-visible{outline:2px solid #087f8c;outline-offset:-3px}@media(max-width:900px){.creative-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.creative-card.creative-featured{grid-column:span 2}}@media(max-width:700px){.creative-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.creative-card.creative-featured{grid-column:auto}.creative-copy{padding:.7rem}.creative-media{aspect-ratio:3/4}.creative-result{font-size:.52rem}.creative-lightbox{padding:10px}.creative-lightbox img,.creative-lightbox video{max-height:80vh;width:100%;object-fit:contain}.creative-close{right:2px;top:2px}}@media(max-width:360px){.creative-grid{grid-template-columns:1fr}.creative-media{aspect-ratio:4/3}}
+    .creative-section{background:#F5F1E7}.creative-intro{margin-bottom:2.2rem}.creative-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.creative-card{border:1px solid rgba(27,33,28,.12);border-radius:16px;background:#FBF8F0;overflow:hidden;display:flex;flex-direction:column}.creative-card.creative-featured{grid-column:span 1}.creative-media{position:relative;display:block;width:100%;aspect-ratio:4/3;padding:0;border:0;background:#17231B;overflow:hidden;cursor:pointer}.creative-media img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}.creative-media:hover img,.creative-media:focus-visible img{transform:scale(1.025)}.play-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(17,21,16,.82);color:#F5F1E7;font-size:1rem;border:1px solid rgba(243,239,228,.35)}.creative-result{position:absolute;left:12px;bottom:12px;background:#17231B;color:#E0C08A;border-radius:999px;padding:.45rem .7rem;font:600 .65rem "IBM Plex Mono",monospace}.creative-copy{padding:1.1rem 1.2rem 1.3rem}.creative-copy>span{font:600 .62rem "IBM Plex Mono",monospace;letter-spacing:.1em;color:#54715A}.creative-copy h3{font-size:1.25rem;margin:.45rem 0 .35rem}.creative-copy p{margin:0;color:#5D6257;font-size:.8rem}.creative-lightbox{position:fixed;inset:0;z-index:210;background:rgba(10,13,11,.88);display:none;align-items:center;justify-content:center;padding:18px}.creative-lightbox.is-open{display:flex}.creative-lightbox-inner{position:relative;width:min(1000px,100%);max-height:92vh;display:grid;place-items:center}.creative-lightbox img,.creative-lightbox video{display:block;max-width:100%;max-height:88vh;width:auto;height:auto;border-radius:12px;background:#111}.creative-close{position:absolute;right:-8px;top:-12px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(243,239,228,.3);background:#F5F1E7;color:#17231B;font-size:1.4rem;cursor:pointer;z-index:2}.creative-lightbox-note{position:absolute;left:0;bottom:-32px;color:#E0C08A;font:600 .68rem "IBM Plex Mono",monospace}.creative-media:focus-visible{outline:2px solid #54715A;outline-offset:-3px}@media(max-width:900px){.creative-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.creative-card.creative-featured{grid-column:span 2}}@media(max-width:700px){.creative-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.creative-card.creative-featured{grid-column:auto}.creative-copy{padding:.7rem}.creative-media{aspect-ratio:3/4}.creative-result{font-size:.52rem}.creative-lightbox{padding:10px}.creative-lightbox img,.creative-lightbox video{max-height:80vh;width:100%;object-fit:contain}.creative-close{right:2px;top:2px}}@media(max-width:360px){.creative-grid{grid-template-columns:1fr}.creative-media{aspect-ratio:4/3}}
   `;
   document.head.appendChild(creativeStyle);
 
 
-  // Autoplay muted previews when creative cards enter the viewport.
-  // Browsers generally block autoplay with sound, so previews start muted; users can open a creative for full controls.
+  // Start muted inline video previews when the Creatives section enters view.
+  // Muted autoplay is the most broadly supported browser policy; sound is available in the full player.
   const videoCards = [...creativeSection.querySelectorAll('[data-creative-video]')];
-  const previewObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      const button = entry.target;
-      if (entry.isIntersecting) {
-        if (!button.querySelector('video.inline-creative-preview')) {
-          const poster = button.querySelector('img');
-          const video = document.createElement('video');
-          video.className = 'inline-creative-preview';
-          video.src = 'creatives/' + button.dataset.creativeVideo;
-          video.poster = poster ? poster.src : '';
-          video.muted = true;
-          video.defaultMuted = true;
-          video.loop = true;
-          video.autoplay = true;
-          video.playsInline = true;
-          video.preload = 'none';
-          video.setAttribute('aria-label', 'Autoplaying muted ad creative preview');
-          video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
-          button.insertBefore(video, button.firstChild);
-          if (poster) poster.style.display = 'none';
-          const playBadge = button.querySelector('.play-badge');
-          if (playBadge) playBadge.style.display = 'none';
-          const playPromise = video.play();
-          if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(() => {
-            if (poster) poster.style.display = '';
-            video.remove();
-            if (playBadge) playBadge.style.display = '';
-          });
-        } else {
-          const video = button.querySelector('video.inline-creative-preview');
-          if (video) video.play().catch(() => {});
-        }
-      } else {
-        const video = button.querySelector('video.inline-creative-preview');
+  const activePreviewVideos = new Set();
+  const startPreview = button => {
+    let video = button.querySelector('video.inline-creative-preview');
+    if (!video) {
+      const poster = button.querySelector('img');
+      video = document.createElement('video');
+      video.className = 'inline-creative-preview';
+      video.setAttribute('muted', '');
+      video.muted = true;
+      video.defaultMuted = true;
+      video.setAttribute('playsinline', '');
+      video.playsInline = true;
+      video.setAttribute('autoplay', '');
+      video.autoplay = true;
+      video.setAttribute('loop', '');
+      video.loop = true;
+      video.preload = 'auto';
+      video.setAttribute('aria-label', 'Muted autoplay ad creative preview');
+      video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
+      // Assign the source only after muted/inline attributes are in place.
+      video.src = new URL('creatives/' + button.dataset.creativeVideo, document.baseURI).href;
+      button.insertBefore(video, button.firstChild);
+      video.addEventListener('playing', () => {
+        if (poster) poster.style.display = 'none';
+        const badge = button.querySelector('.play-badge');
+        if (badge) badge.style.display = 'none';
+      }, { once: true });
+      video.addEventListener('error', () => {
+        video.remove();
+        if (poster) poster.style.display = '';
+        const badge = button.querySelector('.play-badge');
+        if (badge) badge.style.display = '';
+      }, { once: true });
+      video.load();
+    }
+    activePreviewVideos.add(video);
+    const tryPlay = () => {
+      video.muted = true;
+      const promise = video.play();
+      if (promise && promise.catch) promise.catch(() => {
+        // Keep the poster visible if this browser/device refuses inline autoplay.
+      });
+    };
+    if (video.readyState >= 2) tryPlay();
+    else {
+      video.addEventListener('loadeddata', tryPlay, { once: true });
+      video.addEventListener('canplay', tryPlay, { once: true });
+    }
+  };
+  const pausePreviews = () => activePreviewVideos.forEach(video => video.pause());
+  const resumeVisiblePreviews = () => videoCards.forEach(button => {
+    const rect = button.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) startPreview(button);
+  });
+  if ('IntersectionObserver' in window) {
+    const creativeSectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) resumeVisiblePreviews();
+        else pausePreviews();
+      });
+    }, { threshold: 0.05 });
+    creativeSectionObserver.observe(creativeSection);
+    const cardObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) startPreview(entry.target);
+      else {
+        const video = entry.target.querySelector('video.inline-creative-preview');
         if (video) video.pause();
       }
-    });
-  }, { rootMargin: '250px 0px', threshold: 0.15 }) : null;
-  if (previewObserver) videoCards.forEach(button => previewObserver.observe(button));
+    }), { rootMargin: '100px 0px', threshold: 0.05 });
+    videoCards.forEach(button => cardObserver.observe(button));
+  } else {
+    videoCards.forEach(startPreview);
+  }
 
   const lightbox = document.createElement('div');
   lightbox.className = 'creative-lightbox';
