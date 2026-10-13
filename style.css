@@ -164,3 +164,58 @@ footer{font-size:.68rem}
  .stats-grid b{font-size:1.1rem}
  .stats-grid span{font-size:.64rem}
 }
+
+
+/* Performance and responsive polish — slate navy, ivory and teal */
+:root{--bg:#101c2c;--panel:#192b40;--paper:#f6f5f0;--ink:#14243a;--dim:#596779;--gold:#087f8c;--gold-soft:#7de0d0;--sage:#087f8c}
+.hero em{color:#087f8c}
+.hero-proof-label{color:#087f8c}
+.hero-proof>strong span{color:#087f8c}
+.stats-strip,.hero-card,.case-badge{background:#14243a}
+.stats-grid b,.hero-metric strong,.work-card strong,.contact-links a{color:#7de0d0}
+.work-card .tag,.skill-group h3{color:#7de0d0}
+.case-grid article{border-top-color:#087f8c}
+.funnel i{color:#087f8c}
+.neutral-icon{border-color:#087f8c;color:#7de0d0!important}
+.btn-primary{background:#14243a}
+.btn-ghost:hover{border-color:#087f8c}
+.nav-cta{background:#14243a!important}
+.creative-result{background:#14243a;color:#7de0d0}
+.creative-copy>span{color:#087f8c}
+.play-badge{background:rgba(20,36,58,.9);color:#f6f5f0}
+.eyebrow{color:#087f8c}
+.hero-card .card-kicker{color:#7de0d0}
+.case-section{background:#e9edf0}
+.funnel div{background:#f9faf8}
+@media(max-width:900px){
+ .hero-grid{grid-template-columns:minmax(0,1fr);gap:1rem}
+ .hero-card{width:100%}
+ .stats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .case-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .creative-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ .wrap{padding-left:16px;padding-right:16px}
+ .header-inner{min-height:64px}
+ .main-nav{top:64px}
+ .hero-proof>strong{font-size:clamp(3rem,16vw,4rem)}
+ .hero h1{font-size:clamp(2rem,8.5vw,2.8rem)}
+ .hero-card{max-width:none}
+ .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+ .stats-grid span{font-size:.68rem}
+ .case-grid{grid-template-columns:1fr}
+ .creative-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+ .creative-media{aspect-ratio:3/4}
+ .creative-copy{padding:.65rem}
+ .creative-copy h3{font-size:.92rem}
+ .creative-copy p{font-size:.68rem;line-height:1.4}
+ .creative-result{font-size:.48rem;white-space:normal}
+ .creative-card:hover{transform:none}
+ .funnel{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .contact-links a{font-size:.85rem}
+}
+@media(max-width:360px){
+ .creative-grid{grid-template-columns:1fr}
+ .tool-grid{grid-template-columns:1fr}
+}
