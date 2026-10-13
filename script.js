@@ -109,11 +109,11 @@
           <button class="creative-media" type="button" data-creative-video="creative-4-web.mp4" aria-label="Open UGC ad creative 4"><img src="creatives/creative-4-poster.jpg" alt="UGC ad creative" loading="lazy" decoding="async"><span class="play-badge">▶</span></button>
           <div class="creative-copy"><span>UGC · META ADS</span><h3>Creative testing variation</h3><p>Another short-form variation used as part of the creative testing mix.</p></div>
         </article>
-        <article class="creative-card"><button class="creative-media" type="button" data-creative-image="creatives/5.png" aria-label="Open static ad creative 5"><img src="creatives/5.png" alt="Static Meta ad creative" loading="lazy" decoding="async"></button><div class="creative-copy"><span>STATIC · META ADS</span><h3>Product-led creative</h3><p>Static creative format developed for paid social testing.</p></div></article>
-        <article class="creative-card"><button class="creative-media" type="button" data-creative-image="creatives/6.png" aria-label="Open static ad creative 6"><img src="creatives/6.png" alt="Static Meta ad creative" loading="lazy" decoding="async"></button><div class="creative-copy"><span>STATIC · META ADS</span><h3>Promotional creative</h3><p>Offer-led visual creative built for campaign messaging.</p></div></article>
-        <article class="creative-card"><button class="creative-media" type="button" data-creative-image="creatives/7.png" aria-label="Open static ad creative 7"><img src="creatives/7.png" alt="Static Meta ad creative" loading="lazy" decoding="async"></button><div class="creative-copy"><span>STATIC · META ADS</span><h3>Brand/product creative</h3><p>Visual format used to support paid social communication.</p></div></article>
+        
+        
+        
         <article class="creative-card"><button class="creative-media" type="button" data-creative-image="creatives/9.png" aria-label="Open static ad creative 9"><img src="creatives/9.png" alt="Static Meta ad creative" loading="lazy" decoding="async"></button><div class="creative-copy"><span>STATIC · META ADS</span><h3>Campaign creative</h3><p>Additional static creative from the campaign asset mix.</p></div></article>
-        <article class="creative-card"><button class="creative-media" type="button" data-creative-image="creatives/10.png" aria-label="Open static ad creative 10"><img src="creatives/10.png" alt="Static Meta ad creative" loading="lazy" decoding="async"></button><div class="creative-copy"><span>STATIC · META ADS</span><h3>Social ad creative</h3><p>Additional visual asset from the paid social creative set.</p></div></article>
+        
       </div>
     </div>`;
   const skillsSection = document.querySelector('#skills');
@@ -126,8 +126,7 @@
   document.head.appendChild(creativeStyle);
 
 
-  // Start muted inline video previews when the Creatives section enters view.
-  // Muted autoplay is the most broadly supported browser policy; sound is available in the full player.
+  // Autoplay muted creative previews as their cards enter view; no click required.
   const videoCards = [...creativeSection.querySelectorAll('[data-creative-video]')];
   const activePreviewVideos = new Set();
   const startPreview = button => {
@@ -136,49 +135,34 @@
       const poster = button.querySelector('img');
       video = document.createElement('video');
       video.className = 'inline-creative-preview';
-      video.setAttribute('muted', '');
-      video.muted = true;
-      video.defaultMuted = true;
-      video.setAttribute('playsinline', '');
-      video.playsInline = true;
-      video.setAttribute('autoplay', '');
-      video.autoplay = true;
-      video.setAttribute('loop', '');
-      video.loop = true;
-      video.preload = 'metadata';
+      video.muted = true; video.defaultMuted = true;
+      video.setAttribute('muted', ''); video.setAttribute('playsinline', '');
+      video.playsInline = true; video.setAttribute('autoplay', ''); video.autoplay = true;
+      video.setAttribute('loop', ''); video.loop = true; video.preload = 'metadata';
       video.setAttribute('aria-label', 'Muted autoplay ad creative preview');
-      video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
-      // Assign the source only after muted/inline attributes are in place.
-      video.src = new URL('creatives/' + button.dataset.creativeVideo, document.baseURI).href;
-      button.insertBefore(video, button.firstChild);
-      video.addEventListener('playing', () => {
+      video.style.cssText = 'position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;';
+      const revealVideo = () => {
         if (poster) poster.style.display = 'none';
-        const badge = button.querySelector('.play-badge');
-        if (badge) badge.style.display = 'none';
-      }, { once: true });
-      video.addEventListener('error', () => {
-        video.remove();
+        const badge = button.querySelector('.play-badge'); if (badge) badge.style.display = 'none';
+      };
+      const restorePoster = () => {
         if (poster) poster.style.display = '';
-        const badge = button.querySelector('.play-badge');
-        if (badge) badge.style.display = '';
+        const badge = button.querySelector('.play-badge'); if (badge) badge.style.display = '';
+      };
+      video.addEventListener('playing', revealVideo);
+      video.addEventListener('error', restorePoster, { once: true });
+      video.addEventListener('loadeddata', () => {
+        video.muted = true;
+        const request = video.play(); if (request && request.catch) request.catch(() => {});
       }, { once: true });
+      button.insertBefore(video, button.firstChild);
+      activePreviewVideos.add(video);
+      video.src = new URL('creatives/' + button.dataset.creativeVideo, document.baseURI).href;
       video.load();
     }
-    activePreviewVideos.add(video);
-    const tryPlay = () => {
-      // Keep only one inline preview playing at a time to reduce decoding and bandwidth.
-      activePreviewVideos.forEach(other => { if (other !== video) other.pause(); });
-      video.muted = true;
-      const promise = video.play();
-      if (promise && promise.catch) promise.catch(() => {
-        // Keep the poster visible if this browser/device refuses inline autoplay.
-      });
-    };
-    if (video.readyState >= 2) tryPlay();
-    else {
-      video.addEventListener('loadeddata', tryPlay, { once: true });
-      video.addEventListener('canplay', tryPlay, { once: true });
-    }
+    video.muted = true;
+    const request = video.play();
+    if (request && request.catch) request.catch(() => {});
   };
   const pausePreviews = () => activePreviewVideos.forEach(video => video.pause());
   const resumeVisiblePreviews = () => videoCards.forEach(button => {
@@ -186,24 +170,16 @@
     if (rect.bottom > 0 && rect.top < window.innerHeight) startPreview(button);
   });
   if ('IntersectionObserver' in window) {
-    const creativeSectionObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) resumeVisiblePreviews();
-        else pausePreviews();
-      });
-    }, { threshold: 0.05 });
-    creativeSectionObserver.observe(creativeSection);
+    const sectionObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) resumeVisiblePreviews(); else pausePreviews();
+    }), { threshold: 0.01 });
+    sectionObserver.observe(creativeSection);
     const cardObserver = new IntersectionObserver(entries => entries.forEach(entry => {
       if (entry.isIntersecting) startPreview(entry.target);
-      else {
-        const video = entry.target.querySelector('video.inline-creative-preview');
-        if (video) video.pause();
-      }
-    }), { rootMargin: '100px 0px', threshold: 0.05 });
+      else { const video = entry.target.querySelector('video.inline-creative-preview'); if (video) video.pause(); }
+    }), { rootMargin: '120px 0px', threshold: 0.01 });
     videoCards.forEach(button => cardObserver.observe(button));
-  } else {
-    videoCards.forEach(startPreview);
-  }
+  } else videoCards.forEach(startPreview);
 
   const lightbox = document.createElement('div');
   lightbox.className = 'creative-lightbox';
