@@ -266,3 +266,7 @@ body,.creative-section{background:#F5F1E7!important;color:#17231B!important}
 .cert-hover-card{background:#F5F1E7!important;border-color:rgba(23,35,27,.2)!important}
 .cert-link:focus-visible,.creative-media:focus-visible{outline-color:#C28D4B!important}
 @media(max-width:700px){.site-header{background:rgba(245,241,231,.99)!important}}
+
+
+/* Keep performance highlights visible immediately on the landing screen */
+.stats-strip{margin-top:0!important;padding-top:1.25rem;padding-bottom:1.25rem}
